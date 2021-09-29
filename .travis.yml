@@ -1,19 +1,25 @@
-
 dist: focal
 sudo: required
-
 language: c
 before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install doxygen graphviz gcc g++
+- sudo apt-get update -qq
+- sudo apt-get install doxygen graphviz gcc g++
 compiler:
-  - gcc
+- gcc
 install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -y libpcap-dev libpci-dev libsndfile1-dev libjack-dev linux-headers-$(uname -r)
-  - sudo apt-get install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libasound2-dev
-
+- sudo apt-get update -qq
+- sudo apt-get install -y libpcap-dev libpci-dev libsndfile1-dev libjack-dev linux-headers-$(uname
+  -r)
+- sudo apt-get install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libasound2-dev
 script:
-  - ./travis.sh
-  - cd ..
-  - tar -czvf gptp.tar.gz gptp
+- "./travis.sh"
+- cd ..
+- tar -czvf gptp.tar.gz gptp
+deploy:
+  provider: releases
+  api_key:
+    secure: KPb8AS9+hqXGZE7owvFg971Wt51jNRRYR9RXJrR2EEjUqs/LJgmXhtPYiITiBm78UC79kNVQ9T0i/GjtpFghBwFOpimjnK2JWo9LXsb02z+0MQT1kqIkAOJjyMryI46ZwKc9+of3ngpXxFEyD6bok5e+jBy0eHC5tgVKX+MjQ9PVWu/dGdEOaE4qNs2FQrxBoQRzoyJpJj0kS/QFjkV3D8kzgJV5iUkTYQzAQMsltWbJQ07wowU2DpfBHlRXwDboTBiPeOCBtE3qv+CBTVbydUTYOusV/2vhJnZuYMYf8PCI6jEuepzAGP1W+JJwgali64eMBVKbrelsE3BuYC2rnKHvgMjnWiesSpAAaB4rwzUuFpD7doIoSr5h+LJrDwIIm814PiCHxTArkaPe8rImDFbeEqfG1rW+mp/xhsp28+dj8L7+v3BnUc7XGCM1ukP0QhGrApQJp4BLtwhOaxTfb4Hie3LpXDsUFrHQ3uhKoL49E95RO7p+XvXD0c7FROyUxxJb6ZrMOBDfzdQjsrpuFU58k54amW0Dt6RgOVmYL4JxwHoEP+BfrDUdhGbGO5GtD0B1F5/0VzJJR7m/5PJ2DJZVgF7cck9jZQeyokAnQviRHpbHqCqG496rV6iHxTeer4yEm02ErEO40mPzDZMN2bH/AkbsPhqCPmTS66EJ5aI=
+  file: gptp.tar.gz
+  skip_cleanup: true
+env:
+  global:
