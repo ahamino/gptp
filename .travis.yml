@@ -13,5 +13,6 @@ install:
   - sudo apt-get install -y libpcap-dev libpci-dev libsndfile1-dev libjack-dev linux-headers-$(uname -r)
   - sudo apt-get install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libasound2-dev
 
-script: ./travis.sh
-
+script:
+  - ./travis.sh
+  - tar -xzvf gptp.tar.gz -C $PWD
