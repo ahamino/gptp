@@ -15,4 +15,5 @@ install:
 
 script:
   - ./travis.sh
-  - tar -xzvf gptp.tar.gz -C $PWD
+  - cd ..
+  - tar -czvf gptp.tar.gz gptp
